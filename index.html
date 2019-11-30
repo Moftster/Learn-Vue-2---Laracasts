@@ -6,7 +6,10 @@
 
     <style>
     
-        .is-loading { background: red; }
+        /* .is-loading { background: red; } */
+
+        /* Button red if disabled but green if not */
+        
 
     
     </style>
@@ -15,7 +18,11 @@
 <body>
     <div id="root">
 
-        <button :class="{'is-loading' : isLoading}" @click="toggleClass">Click me</button>
+        <!-- dynamically determine is button is disabled -->
+
+        <button v-bind:disabled="isDisabled">Disabled button</button>
+
+        <!-- <button :class="{'is-loading' : isLoading}" @click="toggleClass">Click me</button> -->
     </div>
 
 
@@ -29,17 +36,19 @@
 
         data:    {
 
-            isLoading: false
+            // isLoading: false
+
+            isDisabled: true
 
         },
 
         methods: {
 
-            toggleClass() {
+            // toggleClass() {
 
-                this.isLoading = true;
+            //     this.isLoading = true;
 
-            }
+            // }
 
         }
 
