@@ -28,7 +28,7 @@
             <ul>
                 <div v-for="task in tasks">
                     <li v-text="task.description"> </li> 
-                    <button>Work on task</button>
+                    <button v-on:click="task.wip = true"> Work on task</button>
                 </div>
             </ul>
 
@@ -36,12 +36,12 @@
 
         <div class="column">
 
-        <h2>Tasks in progress</h2>
+        <h2>Task in progress</h2>
 
             <ul>
-               <div v-for="task in incompleteTasks">
+               <div v-for="task in tasksInProgress">
                 <li  v-text="task.description"></li>
-                <button>Task completed</button> 
+                <button v-on:click="task.completed = true">Task completed</button> 
             </div>
             </ul>
 
@@ -49,10 +49,10 @@
 
         <div class="column">
 
-        <h2>Completed tasks</h2>
+        <h2>Task complete</h2>
 
             <ul>
-                <div v-for="task in incompleteTasks">
+                <div v-for="task in completedTasks">
                     <li  v-text="task.description"></li>
                 </div>
              </ul>
@@ -76,25 +76,44 @@
 
             tasks: [
 
-                { description: 'Go to the store', completed: true },
+                { description: 'Go to the store', wip: false, completed: false },
 
-                { description: 'Go to the cinema', completed: true },
+                { description: 'Go to the cinema', wip: false, completed: false },
 
-                { description: 'Go to the bike shop', completed: false },
+                { description: 'Go to the bike shop', wip: false, completed: false },
 
-                { description: 'Wash up', completed: true }
+                { description: 'Wash up', wip: false, completed: false }
 
 
             ]
 
         },
 
+        // methods: {
+
+            
+        //     taskToTaskInProgress() {
+
+        //         this.tasks.completed = false
+
+        //         }   
+
+
+        // },
+
         computed: {
 
-            incompleteTasks() {
+            tasksInProgress() {
 
-                return this.tasks.filter(task => ! task.completed);
+                return this.tasks.filter(task => task.wip);
+            }, 
+
+            completedTasks() {
+
+                return this.tasks.filter(tasks => tasks.completed);
+
             }
+
 
         },
 
