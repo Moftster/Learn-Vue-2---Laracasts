@@ -5,10 +5,11 @@
     <title></title>
 
     <style>
-    
-        /* .is-loading { background: red; } */
 
-        /* Button red if disabled but green if not */
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
         
 
     
@@ -18,11 +19,48 @@
 <body>
     <div id="root">
 
-        <!-- dynamically determine is button is disabled -->
+        <div class="row">
 
-        <button v-bind:disabled="isDisabled">Disabled button</button>
+        <div class="column">
 
-        <!-- <button :class="{'is-loading' : isLoading}" @click="toggleClass">Click me</button> -->
+        <h2>Tasks</h2>
+
+            <ul>
+                <div v-for="task in tasks">
+                    <li v-text="task.description"> </li> 
+                    <button>Work on task</button>
+                </div>
+            </ul>
+
+        </div>
+
+        <div class="column">
+
+        <h2>Tasks in progress</h2>
+
+            <ul>
+               <div v-for="task in incompleteTasks">
+                <li  v-text="task.description"></li>
+                <button>Task completed</button> 
+            </div>
+            </ul>
+
+        </div>
+
+        <div class="column">
+
+        <h2>Completed tasks</h2>
+
+            <ul>
+                <div v-for="task in incompleteTasks">
+                    <li  v-text="task.description"></li>
+                </div>
+             </ul>
+
+         </div>
+
+         </div>
+
     </div>
 
 
@@ -36,21 +74,29 @@
 
         data:    {
 
-            // isLoading: false
+            tasks: [
 
-            isDisabled: true
+                { description: 'Go to the store', completed: true },
+
+                { description: 'Go to the cinema', completed: true },
+
+                { description: 'Go to the bike shop', completed: false },
+
+                { description: 'Wash up', completed: true }
+
+
+            ]
 
         },
 
-        methods: {
+        computed: {
 
-            // toggleClass() {
+            incompleteTasks() {
 
-            //     this.isLoading = true;
+                return this.tasks.filter(task => ! task.completed);
+            }
 
-            // }
-
-        }
+        },
 
         });
     
