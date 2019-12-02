@@ -3,124 +3,43 @@
 <head>
 
     <title></title>
-
-    <style>
-
-        .row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-        }
-        
-
     
-    </style>
 
 </head>
+
 <body>
+
     <div id="root">
 
-        <div class="row">
+        <site-header></site-header>
 
-        <div class="column">
+        <task>Go to store</task>
+        <task>Go to bank</task>
+        <task>Go to shops</task>
+        <task> {{message}} </task>
 
-        <h2>Tasks</h2>
+        <my-button></my-button>
 
-            <ul>
-                <div v-for="task in tasks">
-                    <li v-text="task.description"> </li> 
-                    <button v-on:click="task.wip = true"> Work on task</button>
-                </div>
-            </ul>
 
-        </div>
+        <site-footer></site-footer>
 
-        <div class="column">
+  
 
-        <h2>Task in progress</h2>
-
-            <ul>
-               <div v-for="task in tasksInProgress">
-                <li  v-text="task.description"></li>
-                <button v-on:click="task.completed = true">Task completed</button> 
-            </div>
-            </ul>
-
-        </div>
-
-        <div class="column">
-
-        <h2>Task complete</h2>
-
-            <ul>
-                <div v-for="task in completedTasks">
-                    <li  v-text="task.description"></li>
-                </div>
-             </ul>
-
-         </div>
-
-         </div>
 
     </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-    <script>
+    <script src="main.js"></script>
 
-    var app = new Vue({
-
-        el: '#root',
-
-        data:    {
-
-            tasks: [
-
-                { description: 'Go to the store', wip: false, completed: false },
-
-                { description: 'Go to the cinema', wip: false, completed: false },
-
-                { description: 'Go to the bike shop', wip: false, completed: false },
-
-                { description: 'Wash up', wip: false, completed: false }
+    <style>
 
 
-            ]
-
-        },
-
-        // methods: {
-
-            
-        //     taskToTaskInProgress() {
-
-        //         this.tasks.completed = false
-
-        //         }   
-
-
-        // },
-
-        computed: {
-
-            tasksInProgress() {
-
-                return this.tasks.filter(task => task.wip);
-            }, 
-
-            completedTasks() {
-
-                return this.tasks.filter(tasks => tasks.completed);
-
-            }
-
-
-        },
-
-        });
     
-    </script>
+    </style>
 
     
 </body>
+
 </html>
