@@ -2,10 +2,22 @@ Vue.component('message', {
 
     props: ['title', 'body'],
 
+    data() {
+
+        return {
+
+            isVisible: true
+
+        };
+
+    },
+
     template: `
-    <article class="message">
+    <article class="message" v-show="isVisible">
         <div class="message-header">
             {{ title }}
+
+            <button type="button" class="close" @click="hideModal">x</button>
         </div>
 
         <div class="message-body">
@@ -13,7 +25,15 @@ Vue.component('message', {
         </div>
     </article>
 
-    `
+    `,
+
+    methods: {
+        hideModal() {
+
+            this.isVisible = false;
+
+        }
+    }
 
 });
 
