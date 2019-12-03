@@ -1,38 +1,35 @@
-Vue.component('task', {
+Vue.component('task-list', {
 
-    template: `<li><slot></slot></li><br><h4>{{message}}</h4>`,
+    template: ` <div>
+    
+                    <task v-for="task in tasks"> {{ task.task }} </task>
+                
+                </div>`,
 
     data() {
         return {
-            message: "testing"
+            tasks: [
+
+                {task:'Go to the store', complete: true},
+
+                {task:'Post letter', complete: false},
+
+                {task:'Go to the bank', complete: true},
+
+                {task:'Buy pens', complete: false}
+
+
+            ]
         };
     }
 
 });
 
-Vue.component('site-header', {
+Vue.component('task', {
 
-    template: '<h1>Header of site</h1>'
-
-});
-
-Vue.component('my-button', {
-	template: `<button @click="check"> {{title}} </button>`,			
-	data() {
-		return { checked: false, title: 'Check me now!' }
-	},
-	methods: {
-		check() { this.checked = !this.checked; }
-	}
-});
-
-Vue.component('site-footer', {
-
-    template: '<p style="text-align: center;">This is the footer of site</p>'
+    template: '<li><slot></slot></li>',
 
 });
-
-
 
 
 new Vue({
