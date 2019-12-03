@@ -1,39 +1,25 @@
-Vue.component('task-list', {
+Vue.component('message', {
 
-    template: ` <div>
-    
-                    <task v-for="task in tasks"> {{ task.task }} </task>
-                
-                </div>`,
+    props: ['title', 'body'],
 
-    data() {
-        return {
-            tasks: [
+    template: `
+    <article class="message">
+        <div class="message-header">
+            {{ title }}
+        </div>
 
-                {task:'Go to the store', complete: true},
+        <div class="message-body">
+            {{ body }}
+        </div>
+    </article>
 
-                {task:'Post letter', complete: false},
-
-                {task:'Go to the bank', complete: true},
-
-                {task:'Buy pens', complete: false}
-
-
-            ]
-        };
-    }
+    `
 
 });
-
-Vue.component('task', {
-
-    template: '<li><slot></slot></li>',
-
-});
-
 
 new Vue({
 
     el: '#root'
 
 })
+
