@@ -8,7 +8,7 @@ Vue.component('modal', {
                 <p>TEST Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nihil quas, fuga a hic nostrum dolorem corrupti, neque est veniam officia deserunt?</p>
         </div>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
+    <button class="modal-close" aria-label="close" @click="$emit('close')"></button>
     </div>
     
     `
