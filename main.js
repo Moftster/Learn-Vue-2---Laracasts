@@ -1,45 +1,25 @@
-Vue.component('message', {
-
-    props: ['title', 'body'],
-
-    data() {
-
-        return {
-
-            isVisible: true
-
-        };
-
-    },
-
+Vue.component('modal', {
     template: `
-    <article class="message" v-show="isVisible">
-        <div class="message-header">
-            {{ title }}
-
-            <button type="button" class="close" @click="isVisible = false">x</button>
+    
+    <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+                <p>TEST Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nihil quas, fuga a hic nostrum dolorem corrupti, neque est veniam officia deserunt?</p>
         </div>
-
-        <div class="message-body">
-            {{ body }}
-        </div>
-    </article>
-
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+    <button>Show modal</button>
+    </div>
+    
     `
-
-    // methods: {
-    //     hideModal() {
-
-    //         this.isVisible = false;
-
-    //     }
-    // }
-
 });
 
 new Vue({
 
     el: '#root'
 
-})
+});
+
+
 
