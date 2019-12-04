@@ -9,7 +9,6 @@ Vue.component('modal', {
         </div>
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
-    <button>Show modal</button>
     </div>
     
     `
@@ -17,7 +16,13 @@ Vue.component('modal', {
 
 new Vue({
 
-    el: '#root'
+    el: '#root',
+
+    data: {
+
+            showModal: false
+
+    }
 
 });
 

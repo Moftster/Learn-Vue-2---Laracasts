@@ -12,7 +12,9 @@
 
     <div id="root" class="container">
 
-        <modal></modal>
+        <modal v-if="showModal"></modal>
+
+        <button @click="showModal = true">Show modal</button>
 
              
     </div>
